@@ -49,7 +49,7 @@ reverse_proxy @websocket_v2ray_trojan unix//etc/caddy/trojan
     header Upgrade    websocket
     path /$AUUID-ss
 }
-reverse_proxy @websocket_v2ray_ss 127.0.0.1:4234
+reverse_proxy @websocket_v2ray_ss 127.0.0.1:4324
 
 @websocket_v2ray_socks {
     header Connection *Upgrade*
