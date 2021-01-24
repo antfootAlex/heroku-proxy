@@ -24,7 +24,12 @@
         {
             "port": 4324,"listen": "127.0.0.1","protocol": "shadowsocks",
             "settings": {"method": "$ParameterSSENCYPT","password": "$AUUID"},
-            "streamSettings": {"security": "none","network": "ws","wsSettings": {"path": "/$AUUID-ss"}}
+            "streamSettings": {"security": "none","network": "tcp"}
+        },
+        {
+            "listen": "unix//var/run/ssr.sock","protocol": "shadowsocks",
+            "settings": {"method": "$ParameterSSENCYPT","password": "$AUUID"},
+            "streamSettings": {"security": "none","network": "ws","wsSettings": {"path": "/$AUUID-ssr"}}
         },
         {   "port": 5234,"listen": "127.0.0.1","protocol": "socks",
             "settings": {"auth": "password","accounts": [{"user": "$AUUID","pass": "$AUUID"}]},

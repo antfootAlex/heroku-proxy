@@ -22,13 +22,25 @@ basicauth /$AUUID/* {
     $AUUID $MYUUID-HASH
 }
 
+@websocket_v2ray_ss {
+    header Connection *Upgrade*
+    header Upgrade    websocket
+}
+reverse_proxy @websocket_v2ray_ss 127.0.0.1:4324
+
+@websocket_v2ray_ssr {
+    header Connection *Upgrade*
+    header Upgrade    websocket
+    path /$AUUID-ssr
+}
+reverse_proxy @websocket_v2ray_ssr unix//var/run/ssr.sock
+
 @websocket_v2ray_vmess {
     header Connection *Upgrade*
     header Upgrade    websocket
     path /$AUUID-vmess
 }
 reverse_proxy @websocket_v2ray_vmess unix//etc/caddy/vmess
-
 
 @websocket_v2ray_vless {
     header Connection *Upgrade*
@@ -43,13 +55,6 @@ reverse_proxy @websocket_v2ray_vless unix//etc/caddy/vless
     path /$AUUID-trojan
 }
 reverse_proxy @websocket_v2ray_trojan unix//etc/caddy/trojan
-
-@websocket_v2ray_ss {
-    header Connection *Upgrade*
-    header Upgrade    websocket
-    path /$AUUID-ss
-}
-reverse_proxy @websocket_v2ray_ss 127.0.0.1:4324
 
 @websocket_v2ray_socks {
     header Connection *Upgrade*
