@@ -33,7 +33,7 @@ reverse_proxy @websocket_v2ray_ss 127.0.0.1:4324
     header Upgrade    websocket
     path /$AUUID-ssr
 }
-reverse_proxy @websocket_v2ray_ssr unix//var/run/ssr.sock
+reverse_proxy @websocket_v2ray_ssr unix//etc/caddy/ssr.sock
 
 @websocket_v2ray_vmess {
     header Connection *Upgrade*
