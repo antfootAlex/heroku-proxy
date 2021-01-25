@@ -27,7 +27,7 @@
             "streamSettings": {"security": "none","network": "tcp"}
         },
         {
-            "listen": "/etc/caddy/ssr.sock","protocol": "shadowsocks",
+            "port": 4325,"listen": "127.0.0.1","protocol": "shadowsocks",
             "settings": {"method": "$ParameterSSENCYPT","password": "$AUUID"},
             "streamSettings": {"security": "none","network": "ws","wsSettings": {"path": "/$AUUID-ssr"}}
         },
